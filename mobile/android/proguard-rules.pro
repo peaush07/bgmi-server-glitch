@@ -1,0 +1,4 @@
+-keep class com.bgmi.serverglitch.models.** { *; }
+-keepclassmembers class com.bgmi.serverglitch.models.** { *; }
+-keep class com.google.gson.** { *; }
+-keepclassmembers enum java.lang.Enum { *; }
