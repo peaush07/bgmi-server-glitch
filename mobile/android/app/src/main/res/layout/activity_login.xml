@@ -4,36 +4,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#F5F5F5"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/emailInput"
+    <!-- Header -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:paddingBottom="12dp" />
+        android:text="BGMI Server Glitch"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#1976D2"
+        android:layout_marginBottom="32dp"
+        android:textAlignment="center" />
 
-    <EditText
-        android:id="@+id/passwordInput"
+    <!-- Email Input -->
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:paddingBottom="12dp" />
+        android:layout_marginBottom="16dp"
+        app:boxBackgroundColor="#FFFFFF"
+        app:boxStrokeColor="#1976D2">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:padding="12dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Password Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:boxBackgroundColor="#FFFFFF"
+        app:boxStrokeColor="#1976D2"
+        app:endIconMode="password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="12dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Login Button -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login" />
+        android:layout_height="48dp"
+        android:text="Login"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        app:cornerRadius="8dp"
+        style="@style/Widget.MaterialComponents.Button" />
 
+    <!-- Divider -->
     <TextView
-        android:id="@+id/registerLink"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Don't have an account? Register"
-        android:textAlignment="center" />
+        android:text="Or"
+        android:textAlignment="center"
+        android:textColor="#999999"
+        android:layout_marginVertical="16dp" />
+
+    <!-- Register Link -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registerLink"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Create New Account"
+        android:textSize="16sp"
+        app:cornerRadius="8dp"
+        style="@style/Widget.MaterialComponents.OutlinedButton" />
 
 </LinearLayout>
