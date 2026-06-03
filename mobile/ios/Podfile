@@ -1,0 +1,9 @@
+{
+  "clients": [
+    {
+      "client_name": "BGMI Server Glitch",
+      "client_type": "IOS",
+      "bundle_id": "com.bgmi.serverglitch"
+    }
+  ]
+}

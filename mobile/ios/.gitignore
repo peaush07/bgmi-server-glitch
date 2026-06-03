@@ -1,0 +1,26 @@
+# Pods
+Pods/
+Podfile.lock
+
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+build/
+
+# Swift Package Manager
+.swiftpm/
+*.xcframework
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Environment
+.env
+.env.local
