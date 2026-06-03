@@ -1,0 +1,33 @@
+# Backend
+backend/target/
+backend/.idea/
+backend/*.iml
+backend/out/
+
+# Mobile
+mobile/node_modules/
+mobile/yarn.lock
+mobile/package-lock.json
+mobile/.expo/
+mobile/dist/
+
+# Admin Panel
+admin-panel/node_modules/
+admin-panel/build/
+admin-panel/dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
