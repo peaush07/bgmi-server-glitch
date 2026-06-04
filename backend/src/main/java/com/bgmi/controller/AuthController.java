@@ -1,28 +1,39 @@
 package com.bgmi.controller;
 
-import com.bgmi.dto.LoginRequest;
-import com.bgmi.dto.RegisterRequest;
-import com.bgmi.dto.AuthResponse;
-import com.bgmi.service.AuthService;
-import lombok.RequiredArgsConstructor;
+import com.bgmi.security.JwtUtil;
+import com.bgmi.security.JwtUtil.Token;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
-@RequestMapping("/auth")
-@RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/auth")
 public class AuthController {
 
-    private final AuthService authService;
+    // Optional: require admin password to issue tokens.
+    @Value("${app.require-admin-for-token:true}")
+    private boolean requireAdminForToken;
 
-    @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
-        return ResponseEntity.ok(authService.register(request));
-    }
+    @PostMapping("/create-session")
+    public ResponseEntity<?> createSession(@RequestBody Map<String, String> body) {
+        String email = body.get("email");
+        String adminPassword = body.get("adminPassword");
 
-    @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
-        return ResponseEntity.ok(authService.login(request));
+        if (email == null || email.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "email is required"));
+        }
+
+        if (requireAdminForToken) {
+            // Basic admin password check: read current admin password from env or replace with DB lookup.
+            String expected = System.getenv("ADMIN_PASSWORD");
+            if (expected == null || !expected.equals(adminPassword)) {
+                return ResponseEntity.status(401).body(Map.of("error", "invalid admin password"));
+            }
+        }
+
+        Token token = JwtUtil.createToken(email);
+        return ResponseEntity.ok(Map.of("token", token.token, "expiresAt", token.expiresAt));
     }
 }
