@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "BGMI Server Expo",
+    "slug": "bgmi-server-expo",
+    "platforms": ["ios","android","web"],
+    "version": "1.0.0",
+    "sdkVersion": "49.0.0",
+    "orientation": "portrait",
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  }
+}
